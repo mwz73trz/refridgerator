@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container text-center">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand">DigiFridge</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Add
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Food</a></li>
+              <li><a class="dropdown-item" href="#">Recipe</a></li>
+            </ul>
+          </li>
+        </ul>
+        <button type="button" class="btn btn-success sticky-top">Generate recipe</button>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="d-flex align-content-start flex-wrap">
+    {% for food in food_list %}
+    <div class="card border-0" style="max-width: 200px;">
+      <img src="{{ food.pic.url }}" alt="{{ food.title }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ food.title }}</h5>
+        <div class="d-flex justify-content-between">
+          <p><strong>Amount:</strong> {{ food.amount }}{{ food.amount_type }}</p>
+          <p><strong>BBE:</strong> {{ food.best_before_end }}</p>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
