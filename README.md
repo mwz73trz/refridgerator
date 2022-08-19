@@ -1,0 +1,2 @@
+# refridgerator
+Django app
